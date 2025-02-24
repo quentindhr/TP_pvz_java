@@ -21,19 +21,19 @@ public class MapRepository implements MapDAO {
 
     @Override
     public void createMap(Map map) {
-        String sql = "INSERT INTO maps (id_map, ligne, colonne, chemin_image) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Map (id_map, ligne, colonne, chemin_image) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, map.getId_map(), map.getLigne(), map.getColonne(), map.getChemin_image());
     }
 
     @Override
     public List<Map> getAllMaps() {
-        String sql = "SELECT * FROM maps";
+        String sql = "SELECT * FROM Map";
         return jdbcTemplate.query(sql, new MapRowMapper());
     }
 
     @Override
     public Map getMapById(int id) {
-        String sql = "SELECT * FROM maps WHERE id_map = ?";
+        String sql = "SELECT * FROM Map WHERE id_map = ?";
         return jdbcTemplate.queryForObject(sql, new MapRowMapper(), id);
     }
 
@@ -45,7 +45,7 @@ public class MapRepository implements MapDAO {
 
     @Override
     public void deleteMap(int id) {
-        String sql = "DELETE FROM maps WHERE id_map = ?";
+        String sql = "DELETE FROM Map WHERE id_map = ?";
         jdbcTemplate.update(sql, id);
     }
 
