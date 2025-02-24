@@ -1,14 +1,14 @@
 package com.epf.dao;
 
-import scala.collection.immutable.List;
+import java.util.List;
+
+import com.epf.Plante;
 
 public interface PlanteDAO {
-
-    void createPlante(int id, String name);
-    String gePlante(int id);
-    void updatePlante(int id, String newName);
-    void deletePlante(int id);
-    List<String> getAllPlantes();
-    
-    
+    void createPlante(Plante plante);
+    List<Plante> getAllPlantes();
+    Plante getPlanteById(String id);
+    void updatePlante(Plante plante);
+    void deletePlante(String id);
 }
+
