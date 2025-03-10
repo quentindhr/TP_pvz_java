@@ -9,7 +9,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import org.mockito.MockitoAnnotations;
 
-import com.epf.service.PlanteService;
+import com.epf.ImplService.ImplPlante;
 
 class PlanteServiceTest {
 
@@ -17,7 +17,7 @@ class PlanteServiceTest {
     private PlanteRepository planteRepository;
 
     @InjectMocks
-    private PlanteService planteService;
+    private ImplPlante planteService;
 
     @BeforeEach
     void setUp() {
@@ -49,4 +49,3 @@ class PlanteServiceTest {
         verify(planteRepository, times(1)).createPlante(serge);
     }
 }
-
