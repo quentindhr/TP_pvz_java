@@ -44,7 +44,7 @@ public class ImplMap implements MapService {
     }
 
     @Override
-    public void removeMap(int id) {
+    public void deleteMap(int id) {
         // Appliquer la logique métier si nécessaire avant de supprimer la carte
         mapDAO.deleteMap(id);
     }

@@ -9,7 +9,7 @@ public interface ZombieService {
     List<Zombie> getAllZombies();
     Zombie getZombieById(String id);
     void updateZombie(Zombie zombie);
-    void removeZombie(String id);
+    void deleteZombie(String id);
     List<Zombie> getZombiesByMapId(String mapId);
 }
 

@@ -9,5 +9,5 @@ public interface MapService {
     List<Map> getAllMaps();
     Map getMapById(int id);
     void updateMap(Map map);
-    void removeMap(int id);
+    void deleteMap(int id);
 }
