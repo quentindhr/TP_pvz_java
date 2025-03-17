@@ -44,7 +44,7 @@ public class ImplZombie implements ZombieService {
     }
 
     @Override
-    public void removeZombie(String id) {
+    public void deleteZombie(String id) {
         // Appliquer la logique métier si nécessaire avant de supprimer le zombie
         zombieDAO.deleteZombie(id);
     }
