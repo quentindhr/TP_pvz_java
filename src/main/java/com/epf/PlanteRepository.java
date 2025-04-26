@@ -32,19 +32,20 @@ public class PlanteRepository implements PlanteDAO {
     }
 
     @Override
-    public Plante getPlanteById(String id) {
+    public Plante getPlanteById(int id) {
         String sql = "SELECT * FROM Plante WHERE id_plante = ?";
         return jdbcTemplate.queryForObject(sql, new PlanteRowMapper(), id);
     }
 
     @Override
     public void updatePlante(Plante plante) {
+        String effetValue = plante.getEffet() != null ? plante.getEffet().name() : null;
         String sql = "UPDATE Plante SET nom = ?, point_de_vie = ?, attaque_par_seconde = ?, degat_attaque = ?, cout = ?, soleil_par_seconde = ?, effet = ?, chemin_image = ? WHERE id_plante = ?";
-        jdbcTemplate.update(sql, plante.getNom(), plante.getPoint_de_vie(), plante.getAttaque_par_seconde(), plante.getDegat_attaque(), plante.getCout(), plante.getSoleil_par_seconde(), plante.getEffet().name(), plante.getChemin_image(), plante.getId_plante());
+        jdbcTemplate.update(sql, plante.getNom(), plante.getPoint_de_vie(), plante.getAttaque_par_seconde(), plante.getDegat_attaque(), plante.getCout(), plante.getSoleil_par_seconde(), effetValue, plante.getChemin_image(), plante.getId_plante());
     }
 
     @Override
-    public void deletePlante(String id) {
+    public void deletePlante(int id) {
         String sql = "DELETE FROM Plante WHERE id_plante = ?";
         jdbcTemplate.update(sql, id);
     }
@@ -53,14 +54,14 @@ public class PlanteRepository implements PlanteDAO {
         @Override
         public Plante mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Plante(
-                rs.getString("id_plante"),
+                rs.getInt("id_plante"),
                 rs.getString("nom"),
                 rs.getInt("point_de_vie"),
                 rs.getFloat("attaque_par_seconde"),
                 rs.getInt("degat_attaque"),
                 rs.getInt("cout"),
                 rs.getInt("soleil_par_seconde"),
-                Plante.effet.valueOf(rs.getString("effet")),
+                Plante.effet.fromLabel(rs.getString("effet")),
                 rs.getString("chemin_image")
             );
         }

@@ -32,7 +32,7 @@ public class ZombieRepository implements ZombieDAO {
     }
 
     @Override
-    public Zombie getZombieById(String id) {
+    public Zombie getZombieById(int id) {
         String sql = "SELECT * FROM Zombie WHERE id_zombie = ?";
         return jdbcTemplate.queryForObject(sql, new ZombieRowMapper(), id);
     }
@@ -44,13 +44,13 @@ public class ZombieRepository implements ZombieDAO {
     }
 
     @Override
-    public void deleteZombie(String id) {
+    public void deleteZombie(int id) {
         String sql = "DELETE FROM Zombie WHERE id_zombie = ?";
         jdbcTemplate.update(sql, id);
     }
 
     @Override
-    public List<Zombie> getZombiesByMapId(String mapId) {
+    public List<Zombie> getZombiesByMapId(int mapId) {
         String sql = "SELECT * FROM Zombie WHERE id_map = ?";
         return jdbcTemplate.query(sql, new ZombieRowMapper(), mapId);
     }
@@ -59,14 +59,14 @@ public class ZombieRepository implements ZombieDAO {
         @Override
         public Zombie mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new Zombie(
-                rs.getString("id_zombie"),
+                rs.getInt("id_zombie"),
                 rs.getString("nom"),
                 rs.getInt("point_de_vie"),
                 rs.getFloat("attaque_par_seconde"),
                 rs.getInt("degat_attaque"),
                 rs.getFloat("vitesse_de_deplacement"),
                 rs.getString("chemin_image"),
-                rs.getString("id_map")
+                rs.getInt("id_map")
             );
         }
     }

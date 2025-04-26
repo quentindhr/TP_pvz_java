@@ -32,7 +32,7 @@ public class ImplPlante implements PlanteService {
     }
 
     @Override
-    public Plante getPlanteById(String id) {
+    public Plante getPlanteById(int id) {
         // Appliquer des règles métier si nécessaire
         return planteDAO.getPlanteById(id);
     }
@@ -44,7 +44,7 @@ public class ImplPlante implements PlanteService {
     }
 
     @Override
-    public void removePlante(String id) {
+    public void removePlante(int id) {
         // Appliquer la logique métier si nécessaire avant de supprimer la plante
         planteDAO.deletePlante(id);
     }

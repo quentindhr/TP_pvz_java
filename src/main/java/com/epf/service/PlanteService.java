@@ -7,8 +7,8 @@ import com.epf.Plante;
 public interface PlanteService {
     void addPlante(Plante plante);
     List<Plante> getAllPlantes();
-    Plante getPlanteById(String id);
+    Plante getPlanteById(int id);
     void updatePlante(Plante plante);
-    void removePlante(String id);
+    void removePlante(int id);
 }
 

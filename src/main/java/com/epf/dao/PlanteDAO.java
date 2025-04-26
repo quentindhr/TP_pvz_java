@@ -7,8 +7,8 @@ import com.epf.Plante;
 public interface PlanteDAO {
     void createPlante(Plante plante);
     List<Plante> getAllPlantes();
-    Plante getPlanteById(String id);
+    Plante getPlanteById(int id);
     void updatePlante(Plante plante);
-    void deletePlante(String id);
+    void deletePlante(int id);
 }
 

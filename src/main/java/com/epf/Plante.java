@@ -1,7 +1,10 @@
 package com.epf;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public class Plante {
-    private String id_plante;
+    private int id_plante;
     private String nom;
     private int point_de_vie;
     private float attaque_par_seconde;
@@ -12,14 +15,37 @@ public class Plante {
     private String chemin_image;
 
     public enum effet {
-        NORMAL, 
-        SLOW_LOW, 
-        SLOW_MEDIUM, 
-        SLOW_STOP
+    NORMAL("normal"),
+    SLOW_LOW("slow low"),
+    SLOW_MEDIUM("slow medium"),
+    SLOW_STOP("slow stop");
+
+    private final String label;
+
+    effet(String label) {
+        this.label = label;
     }
 
+    @JsonValue
+    public String getLabel() {
+        return label;
+    }
 
-    public Plante(String id_plante, String nom, int point_de_vie, float attaque_par_seconde, int degat_attaque, int cout, int soleil_par_seconde, effet effet, String chemin_image) {
+    @JsonCreator
+    public static effet fromLabel(String label) {
+        for (effet e : values()) {
+            if (e.label.equalsIgnoreCase(label)) {
+                return e;
+            }
+        }
+        throw new IllegalArgumentException("Effet inconnu : " + label);
+    }
+}
+    
+    public Plante() {
+    }
+
+    public Plante(int id_plante, String nom, int point_de_vie, float attaque_par_seconde, int degat_attaque, int cout, int soleil_par_seconde, effet effet, String chemin_image) {
         this.id_plante = id_plante;
         this.nom = nom;
         this.point_de_vie = point_de_vie;
@@ -32,11 +58,11 @@ public class Plante {
     }
 
 
-    public String getId_plante() {
+    public int getId_plante() {
         return this.id_plante;
     }
 
-    public void setId_plante(String id_plante) {
+    public void setId_plante(int id_plante) {
         this.id_plante = id_plante;
     }
 

@@ -39,12 +39,14 @@ public class MapRepository implements MapDAO {
 
     @Override
     public void updateMap(Map map) {
-        String sql = "UPDATE maps SET ligne = ?, colonne = ?, chemin_image = ? WHERE id_map = ?";
+        String sql = "UPDATE Map SET ligne = ?, colonne = ?, chemin_image = ? WHERE id_map = ?";
         jdbcTemplate.update(sql, map.getLigne(), map.getColonne(), map.getChemin_image(), map.getId_map());
     }
 
     @Override
     public void deleteMap(int id) {
+        String sqlzombie = "DELETE FROM Zombie WHERE id_map = ?";
+        jdbcTemplate.update(sqlzombie, id);
         String sql = "DELETE FROM Map WHERE id_map = ?";
         jdbcTemplate.update(sql, id);
     }

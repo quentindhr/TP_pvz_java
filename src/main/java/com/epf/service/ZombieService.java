@@ -7,9 +7,9 @@ import com.epf.Zombie;
 public interface ZombieService {
     void addZombie(Zombie zombie);
     List<Zombie> getAllZombies();
-    Zombie getZombieById(String id);
+    Zombie getZombieById(int id);
     void updateZombie(Zombie zombie);
-    void deleteZombie(String id);
-    List<Zombie> getZombiesByMapId(String mapId);
+    void deleteZombie(int id);
+    List<Zombie> getZombiesByMapId(int mapId);
 }
 

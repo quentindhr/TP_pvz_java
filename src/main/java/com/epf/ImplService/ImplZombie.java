@@ -32,7 +32,7 @@ public class ImplZombie implements ZombieService {
     }
 
     @Override
-    public Zombie getZombieById(String id) {
+    public Zombie getZombieById(int id) {
         // Appliquer des règles métier si nécessaire
         return zombieDAO.getZombieById(id);
     }
@@ -44,13 +44,13 @@ public class ImplZombie implements ZombieService {
     }
 
     @Override
-    public void deleteZombie(String id) {
+    public void deleteZombie(int id) {
         // Appliquer la logique métier si nécessaire avant de supprimer le zombie
         zombieDAO.deleteZombie(id);
     }
 
     @Override
-        public List<Zombie> getZombiesByMapId(String mapId) {
+        public List<Zombie> getZombiesByMapId(int mapId) {
         return zombieDAO.getZombiesByMapId(mapId);
     }
 

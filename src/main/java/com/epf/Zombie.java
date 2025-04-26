@@ -1,17 +1,19 @@
 package com.epf;
 
 public class Zombie {
-    private String id_zombie;
+    private int id_zombie;
     private String nom;
     private int point_de_vie;
     private float attaque_par_seconde;
     private int degat_attaque;
     private float vitesse_de_deplacement;
     private String chemin_image;
-    private String id_map;
+    private int id_map;
 
-
-    public Zombie(String id_zombie, String nom, int point_de_vie, float attaque_par_seconde, int degat_attaque, float vitesse_de_deplacement, String chemin_image, String id_map) {
+    public Zombie() {
+    }
+    
+    public Zombie(int id_zombie, String nom, int point_de_vie, float attaque_par_seconde, int degat_attaque, float vitesse_de_deplacement, String chemin_image, int id_map) {
         this.id_zombie = id_zombie;
         this.nom = nom;
         this.point_de_vie = point_de_vie;
@@ -23,11 +25,11 @@ public class Zombie {
     }
 
 
-    public String getId_zombie() {
+    public int getId_zombie() {
         return this.id_zombie;
     }
 
-    public void setId_zombie(String id_zombie) {
+    public void setId_zombie(int id_zombie) {
         this.id_zombie = id_zombie;
     }
 
@@ -79,11 +81,11 @@ public class Zombie {
         this.chemin_image = chemin_image;
     }
 
-    public String getId_map() {
+    public int getId_map() {
         return this.id_map;
     }
 
-    public void setId_map(String id_map) {
+    public void setId_map(int id_map) {
         this.id_map = id_map;
     }
 

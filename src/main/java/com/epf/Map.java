@@ -15,6 +15,8 @@ public class Map {
         this.chemin_image = chemin_image;
     }
     
+    public Map() {
+    }   
 
     public int getId_map() {
         return this.id_map;
